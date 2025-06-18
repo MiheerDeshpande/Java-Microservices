@@ -1,0 +1,72 @@
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: USERSERVICE
+          uri: lb://USERSERVICE
+          predicates:
+          - Path=/users/**
+        - id: HOTELSERVICE
+          uri: lb://HOTELSERVICE
+          predicates:
+          - Path=/hotels/**, /staffs/**
+        - id: RATINGSERVICE
+          uri: lb://RATINGSERVICE
+          predicates:
+          - Path=/ratings/**
+        
+          
+# this is config for okta security
+
+  security:
+    oauth2:
+      client:
+        registration:
+          okta:
+            client-id: 0oap72q4jdL7n6OJs5d7
+            client-secret: KaKBut3r08y6DGV7gJV3L2PpLwHqgFKIPtpoLAQeHhtA0sXHtwsdx9IAU8DkKxS8
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/okta"
+            scope:
+              - openid
+              - profile
+              - email
+              - offline_access  
+        provider:
+          okta:
+            issuer-uri: https://dev-44569240.okta.com/oauth2/default
+            authorization-uri: https://dev-44569240.okta.com/oauth2/default/v1/authorize
+            token-uri: https://dev-44569240.okta.com/oauth2/default/v1/token
+            user-info-uri: https://dev-44569240.okta.com/oauth2/default/v1/userinfo
+            jwk-set-uri: https://dev-44569240.okta.com/oauth2/default/v1/keys
+            user-name-attribute: sub
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-44569240.okta.com/oauth2/default    
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+
+
+
+server:
+  port: 8084
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      
+      
+      
+      
+
+      

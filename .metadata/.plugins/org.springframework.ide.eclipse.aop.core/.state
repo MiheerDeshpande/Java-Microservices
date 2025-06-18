@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="APIGateway"/>
+<aop-project name="UserService"/>
+<aop-project name="RatingService"/>
+<aop-project name="HotelService"/>
+<aop-project name="ServiceRegistry"/>
+<aop-project name="ConfigServer"/>
+</aop-reference-model>

@@ -1,0 +1,5 @@
+package com.microservice.lcwd.gateway.controllers;
+
+public class AuthController {
+
+}

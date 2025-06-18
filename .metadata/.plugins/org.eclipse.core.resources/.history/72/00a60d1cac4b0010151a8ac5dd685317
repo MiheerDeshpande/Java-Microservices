@@ -1,0 +1,5 @@
+package com.microservice.lcwd.rating.config;
+
+public class SecurityConfig {
+
+}

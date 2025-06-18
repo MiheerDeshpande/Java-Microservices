@@ -1,0 +1,5 @@
+package com.microservice.lcwd.hotel.config;
+
+public class SecurityConfig {
+
+}
